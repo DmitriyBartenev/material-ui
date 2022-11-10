@@ -1,17 +1,17 @@
 import GoodsItem from "./GoodsItem";
 
+import { Grid } from '@mui/material';
+
 const GoodsList = (props) => {
 
     const { goods, setOrder } = props;
 
     return(
-        <div>
-            <div>
-                {goods.map(item => (
-                    <GoodsItem key={item.id} setOrder={setOrder}  {...item}/>
-                ))}
-            </div>
-        </div>
+        <Grid container spacing={2}>
+            {goods.map(item => (
+                <GoodsItem key={item.id} setOrder={setOrder}  {...item}/>
+            ))}
+        </Grid>
     )
 }
 

@@ -1,31 +1,46 @@
+import { Card, CardMedia, CardContent, Typography, Button, CardActions } from '@mui/material';
 
+import { Grid } from '@mui/material';
+ 
 const GoodItem = (props) => {
 
-    const {name, price, setOrder} = props;
+    const {name, price, poster,setOrder} = props;
 
     return(
-        <div>
-            <div>
-                <img 
-                    src={`https://via.placeholder.com/300x150.png`}
-                    alt={name}/>
-            </div>
-            <div>
-                <h5>{name}</h5>
-                <p>Price: {price} руб.</p>
-                <button
-                    onClick={() => {
-                        setOrder({
-                            id:props.id,
-                            name:props.name,
-                            price:props.price
-                        })
-                    }}
-                >
-                    Купить
-                </button>
-            </div>
-        </div>
+        <Grid item xs={12} md={4}>
+            <Card
+                sx={{
+                    height:'100%'
+                }}>
+                <CardMedia 
+                    image={poster}
+                    alt={name}
+                    title={name}
+                    sx={{height: 140}}/>
+                <CardContent>
+                    <Typography
+                        variant='h6'
+                        component='h3'>{name}</Typography>
+                    <Typography
+                        variant='body1'
+                        >Цена: {price} руб.</Typography>
+                </CardContent>
+                <CardActions>
+                    <Button
+                        variant='text'
+                        onClick={() => {
+                            setOrder({
+                                id:props.id,
+                                name:props.name,
+                                price:props.price
+                            })
+                        }}
+                    >
+                        Купить
+                    </Button>
+                </CardActions>
+            </Card>
+        </Grid>
     )
 }
 
